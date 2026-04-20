@@ -36,7 +36,7 @@ class DeterministicIDGeneratorUsingInputStringTest {
 
         // act
         UUID uuid1 = instance.generateID(myData);
-        UUID uuid2 = instance.generateID(myData);
+        UUID uuid2 = instance.generateID(sameMyData);
 
         // assert
         assertEquals(uuid1.toString(), uuid2.toString());
