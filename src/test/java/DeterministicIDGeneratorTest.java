@@ -36,4 +36,40 @@ class DeterministicIDGeneratorTest {
         assertNotEquals(uuid1.toString(), uuid2.toString());
     }
 
+    @Test
+    public void idGeneratorCreatesDifferentIDsInTwoCallsBasedOnDifferentInput() {
+        // arrange
+        record MyData(Integer i, String s) {}
+
+        String seed = "myconstantseedstring";
+        IDGeneration instance = new DeterministicIDGenerator(seed);
+
+        // act
+        MyData myData1 = new MyData(1, "mydata123");
+        UUID uuid1 = instance.generateID(""+myData1.hashCode());;
+        MyData myData2 = new MyData(12, "mydata456");
+        UUID uuid2 = instance.generateID(""+myData2.hashCode());
+
+        // assert
+        assertNotEquals(uuid1.toString(), uuid2.toString());
+    }
+
+    @Test
+    public void idGeneratorCreatesSameIDsInTwoCallsForSameInput() {
+        // arrange
+        record MyData(Integer i, String s) {}
+
+        String seed = "myconstantseedstring";
+        IDGeneration instance = new DeterministicIDGenerator(seed);
+
+        // act
+        MyData myData1 = new MyData(1, "mydata123");
+        UUID uuid1 = instance.generateID(""+myData1.hashCode());;
+        MyData myData2 = new MyData(1, "mydata123");
+        UUID uuid2 = instance.generateID(""+myData2.hashCode());
+
+        // assert
+        assertEquals(uuid1.toString(), uuid2.toString());
+    }
+
 }

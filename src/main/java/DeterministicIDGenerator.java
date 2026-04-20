@@ -15,4 +15,10 @@ public class DeterministicIDGenerator implements IDGeneration {
         int i = counter.incrementAndGet();
         return UUID.nameUUIDFromBytes((seed + i).getBytes());
     }
+
+    @Override
+    public UUID generateID(String input) {
+        return UUID.nameUUIDFromBytes((seed + input).getBytes());
+    }
+
 }

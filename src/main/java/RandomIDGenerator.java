@@ -10,4 +10,9 @@ public class RandomIDGenerator implements IDGeneration {
     public UUID generateID() {
         return UUID.randomUUID();
     }
+
+    @Override
+    public UUID generateID(String input) {
+        return generateID();
+    }
 }
