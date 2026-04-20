@@ -15,7 +15,7 @@ class DeterministicIDGeneratorUsingInputStringTest {
         MyData differentMyData = new MyData(2, "mydata456");
 
         String seed = "myconstantseedstring";
-        DeterministicIDGeneratorUsingInputString instance = new DeterministicIDGeneratorUsingInputString(seed);
+        IDGeneration instance = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.DETERMINISTIC_BASED_ON_INPUT, seed);
 
         // act
         UUID uuid1 = instance.generateID(myData);
@@ -32,7 +32,7 @@ class DeterministicIDGeneratorUsingInputStringTest {
         MyData sameMyData = new MyData(1, "mydata123");
 
         String seed = "myconstantseedstring";
-        DeterministicIDGeneratorUsingInputString instance = new DeterministicIDGeneratorUsingInputString(seed);
+        IDGeneration instance = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.DETERMINISTIC_BASED_ON_INPUT, seed);
 
         // act
         UUID uuid1 = instance.generateID(myData);

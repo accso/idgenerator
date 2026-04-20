@@ -9,7 +9,7 @@ class RandomIDGeneratorTest {
     @Test
     public void idGeneratorCreateDifferentIDs() {
         // arrange
-        IDGeneration instance = new RandomIDGenerator();
+        IDGeneration instance = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.RANDOM);
 
         // act
         UUID uuid1 = instance.generateID();
@@ -22,8 +22,8 @@ class RandomIDGeneratorTest {
     @Test
     public void twoIDGeneratorsCreateDifferentIDs() {
         // arrange
-        IDGeneration instance1 = new RandomIDGenerator();
-        IDGeneration instance2 = new RandomIDGenerator();
+        IDGeneration instance1 = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.RANDOM);
+        IDGeneration instance2 = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.RANDOM);
 
         // act
         UUID uuid1 = instance1.generateID();

@@ -11,8 +11,8 @@ class DeterministicIDGeneratorUsingCounterTest {
     public void idGeneratorCreatesDeterministicIDs() {
         // arrange
         String seed = "myconstantseedstring";
-        IDGeneration instance1 = new DeterministicIDGeneratorUsingCounter(seed);
-        IDGeneration instance2 = new DeterministicIDGeneratorUsingCounter(seed);
+        IDGeneration instance1 = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.DETERMINISTIC_WITH_COUNTER, seed);
+        IDGeneration instance2 = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.DETERMINISTIC_WITH_COUNTER, seed);
 
         // act
         UUID uuid1 = instance1.generateID();
@@ -26,7 +26,7 @@ class DeterministicIDGeneratorUsingCounterTest {
     public void idGeneratorCreatesDifferentIDsInTwoCalls() {
         // arrange
         String seed = "myconstantseedstring";
-        IDGeneration instance = new DeterministicIDGeneratorUsingCounter(seed);
+        IDGeneration instance = IDGeneratorFactory.createGenerator(IDGeneratorFactory.GeneratorType.DETERMINISTIC_WITH_COUNTER, seed);
 
         // act
         UUID uuid1 = instance.generateID();
