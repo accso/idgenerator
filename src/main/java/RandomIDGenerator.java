@@ -12,7 +12,7 @@ public class RandomIDGenerator implements IDGeneration {
     }
 
     @Override
-    public UUID generateID(String input) {
+    public UUID generateID(Object input) {
         return generateID();
     }
 }

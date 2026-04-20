@@ -1,14 +1,18 @@
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class DeterministicIDGenerator implements IDGeneration {
+public class DeterministicIDGeneratorUsingCounter implements IDGeneration {
 
     private final String seed;
     private final AtomicInteger counter = new AtomicInteger(0);
 
-    public DeterministicIDGenerator(String seed) {
+    public DeterministicIDGeneratorUsingCounter(String seed) {
         this.seed = seed;
     }
+
+    /** creates deterministic IDs, different for each call, depends on the order of calls */
 
     @Override
     public UUID generateID() {
@@ -17,8 +21,7 @@ public class DeterministicIDGenerator implements IDGeneration {
     }
 
     @Override
-    public UUID generateID(String input) {
-        return UUID.nameUUIDFromBytes((seed + input).getBytes());
+    public UUID generateID(Object input) {
+        return generateID();
     }
-
 }
